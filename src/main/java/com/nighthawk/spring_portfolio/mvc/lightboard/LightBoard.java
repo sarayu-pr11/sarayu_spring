@@ -72,7 +72,7 @@ public class LightBoard {
     public String toColorPalette() {
         // block sizes
         final int ROWS = 5;
-        final int COLS = 10;
+        final int COLS = 4;
 
         // Build large string for entire color palette
         String outString = "";
@@ -116,10 +116,20 @@ public class LightBoard {
         outString += "\033[m";
 		return outString;
     }
+
+    public void setRandomColor() {
+        int maxColor = 255;
+        int effect = 9;
+        this.red = (short) (Math.random()*(maxColor+1));
+        this.green = (short) (Math.random()*(maxColor+1));
+        this.blue = (short) (Math.random()*(maxColor+1));
+        this.effect = (short) (Math.random()*(effect+1));
+    }
+
     
     static public void main(String[] args) {
         // create and display LightBoard
-        LightBoard lightBoard = new LightBoard(5, 5);
+        LightBoard lightBoard = new LightBoard(2, 4);
         System.out.println(lightBoard);  // use toString() method
         System.out.println(lightBoard.toTerminal());
         System.out.println(lightBoard.toColorPalette());
